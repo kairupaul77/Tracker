@@ -1,0 +1,408 @@
+/* Base Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #f5f5f5;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Align items at the top of the page */
+  height: 100vh; /* Full viewport height */
+  margin: 0;
+  overflow: auto; /* Allow scrolling */
+}
+
+/* App Container */
+.app {
+  max-width: 1000px;
+  width: 100%;
+  padding: 20px;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  min-height: 100%; /* Ensure the container takes full height */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  overflow-y: auto; /* Enable vertical scrolling if content overflows */
+}
+
+h1, h2 {
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+h1 {
+  text-align: center;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #3498db;
+}
+
+/* Error Messages */
+.error-message {
+  color: #e74c3c;
+  background-color: #fadbd8;
+  padding: 10px 15px;
+  border-radius: 4px;
+  margin: 15px 0;
+  border: 1px solid #f5b7b1;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Search Box */
+.search-box {
+  margin: 20px 0;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+  transition: border 0.3s;
+}
+
+.search-box input:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+}
+
+/* Add/Edit Record Form */
+.add-record {
+  background: #ecf0f1;
+  padding: 25px;
+  margin-bottom: 30px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.add-record h2 {
+  margin-bottom: 15px;
+  color: #3498db;
+}
+
+.add-record input {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+  transition: border 0.3s;
+}
+
+.add-record input:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+}
+
+.add-record input::placeholder {
+  color: #95a5a6;
+}
+
+/* File Upload */
+.file-upload {
+  margin: 20px 0;
+  position: relative;
+}
+
+.file-upload label {
+  display: block;
+  padding: 12px;
+  background: #3498db;
+  color: white;
+  border-radius: 4px;
+  text-align: center;
+  cursor: pointer;
+  transition: background 0.3s;
+  font-weight: 500;
+}
+
+.file-upload label:hover {
+  background: #2980b9;
+}
+
+.file-upload input[type="file"] {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  left: 0;
+  top: 0;
+}
+
+.current-media-note {
+  font-size: 12px;
+  color: #7f8c8d;
+  margin-top: 5px;
+  font-style: italic;
+}
+
+/* Buttons */
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+
+.add-record button {
+  background: #3498db;
+  color: white;
+  margin-top: 10px;
+}
+
+.add-record button:hover {
+  background: #2980b9;
+  transform: translateY(-2px);
+}
+
+.edit-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.edit-buttons button:first-child {
+  background: #2ecc71;
+}
+
+.edit-buttons button:first-child:hover {
+  background: #27ae60;
+}
+
+.edit-buttons button:last-child {
+  background: #95a5a6;
+}
+
+.edit-buttons button:last-child:hover {
+  background: #7f8c8d;
+}
+
+/* Records List */
+.records-list {
+  margin-top: 30px;
+}
+
+.sort-options {
+  margin: 20px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.sort-options span {
+  font-weight: 500;
+}
+
+.sort-options button {
+  background: none;
+  border: 1px solid #3498db;
+  color: #3498db;
+  padding: 8px 15px;
+  font-size: 14px;
+}
+
+.sort-options button.active {
+  background: #3498db;
+  color: white;
+}
+
+.sort-options button:hover:not(.active) {
+  background: #eaf2f8;
+}
+
+.records-list ul {
+  list-style: none;
+}
+
+.record-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  margin-bottom: 15px;
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s;
+  border-left: 4px solid #3498db;
+}
+
+.record-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.record-info {
+  flex: 1;
+}
+
+.record-main {
+  font-size: 18px;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.record-details {
+  display: flex;
+  gap: 20px;
+  color: #7f8c8d;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.record-details span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.record-details span::before {
+  content: '•';
+  color: #bdc3c7;
+}
+
+/* Media Preview */
+.media-preview {
+  margin-top: 15px;
+  max-width: 100%;
+}
+
+.media-preview audio, 
+.media-preview video {
+  width: 100%;
+  max-width: 300px;
+  margin-top: 10px;
+  border-radius: 4px;
+  background: #000;
+}
+
+.media-error {
+  color: #e74c3c;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+/* Record Actions */
+.record-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.edit-button {
+  background: #f39c12;
+  color: white;
+  padding: 8px 15px;
+}
+
+.edit-button:hover {
+  background: #e67e22;
+}
+
+.delete-button {
+  background: #e74c3c;
+  color: white;
+  padding: 8px 15px;
+}
+
+.delete-button:hover {
+  background: #c0392b;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  body {
+    flex-direction: column;
+  }
+
+  .app {
+    padding: 15px;
+  }
+
+  .record-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .record-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  .media-preview audio,
+  .media-preview video {
+    max-width: 100%;
+  }
+
+  .edit-buttons {
+    flex-direction: column;
+  }
+
+  .edit-buttons button {
+    width: 100%;
+  }
+
+  .sort-options {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .sort-options button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .record-details {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .add-record {
+    padding: 15px;
+  }
+
+  .search-box input {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  button {
+    font-size: 14px;
+  }
+
+  .add-record input {
+    font-size: 14px;
+  }
+
+  .record-item {
+    padding: 10px;
+  }
+
+  .record-info {
+    text-align: center;
+  }
+}
